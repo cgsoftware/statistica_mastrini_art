@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mastrini" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     tempstatistiche_mastriniart."id" AS tempstatistiche_mastriniart_id,
+     tempstatistiche_mastriniart."create_uid" AS tempstatistiche_mastriniart_create_uid,
+     tempstatistiche_mastriniart."create_date" AS tempstatistiche_mastriniart_create_date,
+     tempstatistiche_mastriniart."write_date" AS tempstatistiche_mastriniart_write_date,
+     tempstatistiche_mastriniart."write_uid" AS tempstatistiche_mastriniart_write_uid,
+     tempstatistiche_mastriniart."p_categoria_name" AS tempstatistiche_mastriniart_p_categoria_name,
+     tempstatistiche_mastriniart."p_magazzino_id" AS tempstatistiche_mastriniart_p_magazzino_id,
+     tempstatistiche_mastriniart."data_doc" AS tempstatistiche_mastriniart_data_doc,
+     tempstatistiche_mastriniart."articolo_id" AS tempstatistiche_mastriniart_articolo_id,
+     tempstatistiche_mastriniart."p_magazzino_name" AS tempstatistiche_mastriniart_p_magazzino_name,
+     tempstatistiche_mastriniart."p_articolo_name" AS tempstatistiche_mastriniart_p_articolo_name,
+     tempstatistiche_mastriniart."num_doc" AS tempstatistiche_mastriniart_num_doc,
+     tempstatistiche_mastriniart."p_categoria_id" AS tempstatistiche_mastriniart_p_categoria_id,
+     tempstatistiche_mastriniart."desc" AS tempstatistiche_mastriniart_desc,
+     tempstatistiche_mastriniart."p_export_csv" AS tempstatistiche_mastriniart_p_export_csv,
+     tempstatistiche_mastriniart."p_adata" AS tempstatistiche_mastriniart_p_adata,
+     tempstatistiche_mastriniart."giac_finale" AS tempstatistiche_mastriniart_giac_finale,
+     tempstatistiche_mastriniart."giac_iniz" AS tempstatistiche_mastriniart_giac_iniz,
+     tempstatistiche_mastriniart."valore" AS tempstatistiche_mastriniart_valore,
+     tempstatistiche_mastriniart."p_articolo_id" AS tempstatistiche_mastriniart_p_articolo_id,
+     tempstatistiche_mastriniart."doc_id" AS tempstatistiche_mastriniart_doc_id,
+     tempstatistiche_mastriniart."uom" AS tempstatistiche_mastriniart_uom,
+     tempstatistiche_mastriniart."p_dadata" AS tempstatistiche_mastriniart_p_dadata,
+     tempstatistiche_mastriniart."qta_mov" AS tempstatistiche_mastriniart_qta_mov,
+     tempstatistiche_mastriniart."move_id" AS tempstatistiche_mastriniart_move_id,
+     tempstatistiche_mastriniart."desc_move" AS tempstatistiche_mastriniart_desc_move,
+     tempstatistiche_mastriniart."data_move" AS tempstatistiche_mastriniart_data_move,
+     product_uom."name" AS product_uom_name,
+     tempstatistiche_mastriniart."cliente" AS tempstatistiche_mastriniart_cliente,
+     tempstatistiche_mastriniart."entrate" AS tempstatistiche_mastriniart_entrate,
+     tempstatistiche_mastriniart."uscite" AS tempstatistiche_mastriniart_uscite
+FROM
+     "public"."product_uom" product_uom RIGHT OUTER JOIN "public"."tempstatistiche_mastriniart" tempstatistiche_mastriniart ON product_uom."id" = tempstatistiche_mastriniart."uom"
+ORDER BY
+     tempstatistiche_mastriniart."articolo_id" ASC,
+     tempstatistiche_mastriniart."data_move" ASC]]>
+	</queryString>
+	<field name="tempstatistiche_mastriniart_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_create_uid" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_create_date" class="java.sql.Timestamp"/>
+	<field name="tempstatistiche_mastriniart_write_date" class="java.sql.Timestamp"/>
+	<field name="tempstatistiche_mastriniart_write_uid" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_p_categoria_name" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_p_magazzino_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_data_doc" class="java.sql.Date"/>
+	<field name="tempstatistiche_mastriniart_articolo_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_p_magazzino_name" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_p_articolo_name" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_num_doc" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_p_categoria_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_desc" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_p_export_csv" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_p_adata" class="java.sql.Timestamp"/>
+	<field name="tempstatistiche_mastriniart_giac_finale" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_mastriniart_giac_iniz" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_mastriniart_valore" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_mastriniart_p_articolo_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_doc_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_uom" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_p_dadata" class="java.sql.Timestamp"/>
+	<field name="tempstatistiche_mastriniart_qta_mov" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_mastriniart_move_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_mastriniart_desc_move" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_data_move" class="java.sql.Date"/>
+	<field name="product_uom_name" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_cliente" class="java.lang.String"/>
+	<field name="tempstatistiche_mastriniart_entrate" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_mastriniart_uscite" class="java.math.BigDecimal"/>
+	<variable name="aumenti" class="java.math.BigDecimal" resetType="Group" resetGroup="product" calculation="Sum">
+		<variableExpression><![CDATA[$F{tempstatistiche_mastriniart_entrate}]]></variableExpression>
+	</variable>
+	<variable name="decrementi" class="java.math.BigDecimal" resetType="Group" resetGroup="product" calculation="Sum">
+		<variableExpression><![CDATA[$F{tempstatistiche_mastriniart_uscite}]]></variableExpression>
+	</variable>
+	<group name="product" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{tempstatistiche_mastriniart_articolo_id}]]></groupExpression>
+		<groupHeader>
+			<band height="36">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="522" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_desc}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.000">
+					<reportElement mode="Opaque" x="693" y="0" width="109" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_giac_iniz}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="654" y="0" width="39" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="560" y="0" width="108" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Giacenza Iniziale]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="20" width="85" height="15"/>
+					<textElement verticalAlignment="Bottom"/>
+					<text><![CDATA[Data Movimento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="85" y="20" width="251" height="15"/>
+					<textElement verticalAlignment="Bottom"/>
+					<text><![CDATA[Descrizione]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="336" y="20" width="207" height="15"/>
+					<textElement verticalAlignment="Bottom"/>
+					<text><![CDATA[Cliente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="629" y="20" width="80" height="15"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+					<text><![CDATA[Q.tà Movimento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="543" y="20" width="80" height="15"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+					<text><![CDATA[Giacenza]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="35" width="802" height="1"/>
+				</line>
+				<staticText>
+					<reportElement x="722" y="20" width="80" height="15"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+					<text><![CDATA[Saldo]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="45">
+				<textField pattern="#,##0.0000">
+					<reportElement mode="Opaque" x="693" y="4" width="109" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_giac_finale}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="0" width="802" height="1"/>
+				</line>
+				<line>
+					<reportElement x="0" y="3" width="802" height="1"/>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="654" y="4" width="39" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="560" y="4" width="108" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Giacenza Finale]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="4" width="145" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Tot. Varizioni Positive]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="199" y="4" width="169" height="20" forecolor="#FF0015" backcolor="#090AFC"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Tot. Variazioni Negative]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="0" y="25" width="39" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.0000" isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="39" y="25" width="95" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{aumenti}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="220" y="25" width="39" height="20" forecolor="#FF0015" backcolor="#090AFC"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.0000" isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="259" y="25" width="109" height="20" forecolor="#FF0015" backcolor="#090AFC"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="11" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{decrementi}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="145" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Movimentazioni Articoli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="0" width="21" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[dal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="0" width="21" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[al]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="188" y="0" width="80" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tempstatistiche_mastriniart_p_dadata}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="288" y="0" width="80" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tempstatistiche_mastriniart_p_adata}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="25" width="126" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Magazzino]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="131" y="25" width="671" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_p_magazzino_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="126" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Articolo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="55" width="126" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="131" y="40" width="671" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_p_articolo_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="131" y="55" width="671" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_p_categoria_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="245" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mainetti Omaf S.r.l.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="754" y="0" width="28" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pag.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="782" y="0" width="20" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{tempstatistiche_mastriniart_qta_mov} > 0]]></printWhenExpression>
+			<textField>
+				<reportElement x="722" y="0" width="24" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000">
+				<reportElement x="746" y="0" width="56" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_giac_iniz} + $F{tempstatistiche_mastriniart_qta_mov}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="85" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tempstatistiche_mastriniart_data_move}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="0" width="251" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_desc_move}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="629" y="0" width="24" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000">
+				<reportElement x="653" y="0" width="56" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_qta_mov}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000">
+				<reportElement x="567" y="0" width="56" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_giac_iniz}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="543" y="0" width="24" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="0" width="207" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="16">
+			<printWhenExpression><![CDATA[$F{tempstatistiche_mastriniart_qta_mov} < 0]]></printWhenExpression>
+			<textField>
+				<reportElement x="722" y="0" width="24" height="15" forecolor="#FF0000"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000">
+				<reportElement x="746" y="0" width="56" height="15" forecolor="#FF0000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_giac_iniz} + $F{tempstatistiche_mastriniart_qta_mov}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="85" height="15" forecolor="#FF0000"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tempstatistiche_mastriniart_data_move}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="0" width="251" height="15" forecolor="#FF0000"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_desc_move}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="629" y="0" width="24" height="15" forecolor="#FF0000"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000">
+				<reportElement x="653" y="0" width="56" height="15" forecolor="#FF0000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_qta_mov}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000">
+				<reportElement x="567" y="0" width="56" height="15" forecolor="#FF0000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_giac_iniz}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="543" y="0" width="24" height="15" forecolor="#FF0000"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="0" width="207" height="15" forecolor="#FF0000"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="46" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

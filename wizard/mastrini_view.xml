@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+    	<record id="view_stampa_mastrini_art" model="ir.ui.view">
+            <field name="name">Stampa Mastrini Articoli</field>
+            <field name="model">stampa.stat.mastrini</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                    <form string="Parametri di Stampa"  >
+                        <field name="dadata" colspan="4" />
+                        <field name="adata" colspan="4" />
+                        <field name="magazzino_id" colspan="4"/>
+                        <field name="categoria_id" colspan="4"/>
+                        <field name="articolo_id" colspan="4"/>
+                        <field name="export_csv"/>	
+                        <separator colspan="4"/>
+                        <group col="4" colspan="4">
+                            <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+                            <button icon="gtk-print" name="check_report" string="Stampa" type="object" colspan="2" default_focus="1" />
+                        </group>
+                    </form>
+                
+            </field>
+        </record>
+    
+    	<act_window name="Stampa Mastrini Articoli"
+			view_mode="form"
+			target="new"
+            key2="client_action_multi"
+			res_model="stampa.stat.mastrini"
+			src_model="stampa.stat.mastrini"
+			id="view_stampa_mastrini_art"/>
+			
+		
+		<menuitem action="view_stampa_mastrini_art"
+			  id="menu_stampa_mastrini_art" 
+			  name="Stampa Mastrini Articoli" 
+			  parent="Reportistica.menu_stampe_vendite" 
+			  />
+			  
+		<record id="wizard_generacsvmastriniart" model="ir.ui.view">
+            <field name="name">Genera File Csv Mastrini Articoli</field>
+            <field name="model">crea_csv_mastrini_art</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Genera File Csv Mastrini Articoli">
+                    <group col="4">
+                        <group colspan="4" >
+                            <newline />
+                            <button icon="gtk-cancel" special="cancel" string="Cancel"/>
+                            <button icon="gtk-ok" name="generacsvmastriniart" string="Export" type="object"/>
+                        </group>
+                        <group colspan="4">
+                            <field name="data" readonly="1"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>			
+        
+       <act_window name="Genera File Csv Mastrini Articoli"
+            res_model="crea_csv_mastrini_art"
+            src_model="crea_csv_mastrini_art"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_wizard_generacsvmastriniart"
+            view_id="wizard_generacsvmastriniart"/>
+            
+    </data>
+</openerp>
+    
