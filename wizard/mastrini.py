@@ -49,10 +49,11 @@ class tempstatistiche_mastriniart(osv.osv):
                 'cliente': fields.char('Numero Documento', size= 50),
                 'data_doc':fields.date('Data Documento'),
                 'valore':fields.float('Valore', digits=(25,4)),
-                'move_id':fields.many2one('stock.move'),  
+                'move_id':fields.integer('Id_move'),  
                 
                 'entrate':fields.float('Aumenti', digits=(25,4)),
                 'uscite':fields.float('Uscite', digits=(25,4)),
+                'saldo':fields.float('Saldo', digits=(25,4)),
                       
                 }
     _order = 'articolo_id, data_move '
@@ -79,7 +80,7 @@ class tempstatistiche_mastriniart(osv.osv):
         ok = self._pulisci(cr, uid, context)
         move_obj=self.pool.get('stock.move')
         cerca = [('type', '<>', 'service')]
-        context['from_date'] = parametri.dadata
+        #context['from_date'] = parametri.dadata
         context['to_date'] = parametri.adata
         context['location']= parametri.magazzino_id.id
         p_dadata = parametri.dadata
@@ -103,27 +104,30 @@ class tempstatistiche_mastriniart(osv.osv):
             #product = self.pool.get('product.product').browse(cr,uid,product_ids[0],context=context)
            
             for product in self.pool.get('product.product').browse(cr,uid,product_ids,context=context):
-                giac_finale = giac_ini = product.qty_available
-                entrate = uscite = 0
+                #giac_finale = giac_ini = product.qty_available
+#                
+                giac_finale = product.qty_available
+                context2=context
+                context2['to_date']=parametri.dadata
+                giac_ini = self.pool.get('product.product').browse(cr,uid,product.id,context=context2).qty_available
+                saldo = giac_ini
+                #entrate = uscite = 0
                 cliente = doc = ''
                 #esistenza = product.qty_available
                 cerca_move = [('product_id','=',product.id),('state','=','done'),('date','<=',p_adata),('date','>=',p_dadata)]
                 move_ids = move_obj.search(cr, uid, cerca_move, context=context)
+                
+                
+               
                 if move_ids:
                     for move in move_obj.browse(cr, uid, move_ids, context=context):
-                        #TESTO SE IL MOVIMENTO E' IN ENTRATA
-                        if move.location_id.id == parametri.magazzino_id.id:
-                            #DOCUMENTO DI VENDITA LA MERCE ESCE DAL MAGAZZINO
-                            # LA MOVIMENTAZIONE È NEGATIVA 
-                            giac_ini += move.product_qty
-#                            import pdb;pdb.set_trace()
-                            uscite = move.product_qty
-                            
-                            if move.picking_id.partner_id:
+                        cliente = doc = ''
+                        if move.picking_id.partner_id:
                                 cliente = move.picking_id.partner_id.name
-                            if move.picking_id.doc_id:
+                        
+                        if move.picking_id.doc_id:
                                 doc = move.picking_id.doc_id.id
-                            riga_wr = {
+                        riga_wr = {
                                        'p_dadata': p_dadata,
                                        'p_adata':p_adata,
                                        'p_magazzino_id': parametri.magazzino_id.id,
@@ -140,60 +144,55 @@ class tempstatistiche_mastriniart(osv.osv):
                                
                                        'move_id': move.id,
                                        'desc_move':move.name,
-                                       'qta_mov': move.product_qty*-1,
+                                       #'qta_mov': move.product_qty*-1,
                                        'data_move':move.date,
                 
                                        'giac_finale': giac_finale, #esistenza - move.product_qty ,
                                        'cliente':cliente,
                                        
                                        'doc_id':doc,
-                                       'uscite':uscite,
+                                       
                                        #'num_doc':fields.char('Numero Documento', size= 50),
                                        #'data_doc':fields.date('Data Documento'),
                                        #'valore':fields.float('Valore', digits=(25,4))
                                }
-                            ok = self.create(cr,uid,riga_wr)
+                        
+                        
+                        
+                        if move.location_id.id == parametri.magazzino_id.id:
+                            #DOCUMENTO DI VENDITA LA MERCE ESCE DAL MAGAZZINO
+                            # LA MOVIMENTAZIONE È NEGATIVA 
+                            #giac_ini += move.product_qty
+#                            import pdb;pdb.set_trace()
+                            uscite = move.product_qty
+                            riga_wr['uscite']=uscite
+#                            
+#                        else:
+#                            riga_wr['uscite']= uscite=0
+                            
+                            #ok = self.create(cr,uid,riga_wr)
                         if move.location_dest_id.id == parametri.magazzino_id.id:
                             #PRODUZIONE DI MERCE MOVIMENTAZIONE POSITIVA 
                             #VÀ SOTTRATTA ALLA GIACENZA FINALE
-                            giac_ini -= move.product_qty
+                            #giac_ini -= move.product_qty
                             entrate = move.product_qty
-                            cliente = ''
-                            if move.picking_id.partner_id:
-                                cliente = move.picking_id.partner_id.name
-                            if move.picking_id.doc_id:
-                                doc = move.picking_id.doc_id.id
-                            riga_wr = {
-                                       'p_dadata': p_dadata,
-                                       'p_adata':p_adata,
-                                       'p_magazzino_id': parametri.magazzino_id.id,
-                                       'p_magazzino_name':parametri.magazzino_id.complete_name,
-                                       'p_categoria_id':parametri.categoria_id.id,
-                                       'p_categoria_name':parametri.categoria_id.name,
-                                       'p_articolo_id':parametri.articolo_id.id ,
-                                       'p_articolo_name':parametri.articolo_id.name_template,
-                               
-                                       'articolo_id':product.id,
-                                       'desc':str(product.default_code)+'-'+str(product.name_template)+'-'+str(product.variants),
-                                       'uom':product.product_tmpl_id.uom_id.id,
-                                       'giac_iniz':giac_ini,
-                               
-                                       'move_id': move.id,
-                                       'desc_move':move.name,
-                                       'qta_mov': move.product_qty,
-                                       'data_move':move.date,
-                                       'giac_finale': giac_finale, #esistenza + move.product_qty ,
-                                       
-                                       'cliente':cliente,
-                                       
-                                       'doc_id':doc,
-                                       'entrate':entrate,
-                                       #'doc_id':fields.many2one('fiscaldoc.header', 'Documento'),
-                                       #'num_doc':fields.char('Numero Documento', size= 50),
-                                       #'data_doc':fields.date('Data Documento'),
-                                       #'valore':fields.float('Valore', digits=(25,4))
-                               }
-                            ok = self.create(cr,uid,riga_wr)
+                            riga_wr['entrate']=entrate
+#                        else:
+#                            riga_wr['entrate']= entrate = 0
+#                                
+#                        saldo += entrate - uscite
+#                        riga_wr['saldo']=saldo
+                            
+                        ok = self.create(cr,uid,riga_wr)
+                riga_up= {}
+                #import pdb;pdb.set_trace()
+                temp_ids = self.pool.get('tempstatistiche.mastriniart').search(cr, uid, [('articolo_id','=',product.id)],context=context, order='data_move,move_id')
+                if temp_ids:
+                    
+                    for riga in self.pool.get('tempstatistiche.mastriniart').browse(cr, uid, temp_ids):
+                        saldo += riga.entrate - riga.uscite
+                        riga_up['saldo']=saldo
+                        ok= self.write(cr, uid, riga.id, riga_up)
             
             
             
